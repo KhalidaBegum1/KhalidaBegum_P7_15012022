@@ -5,3 +5,52 @@
   font-family: DM Sans;
 }
 
+h1 {
+  display: flex;
+  justify-content: center;
+}
+#main-search {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#main-search_input {
+  height: 50px;
+  width: 80%;
+  border-radius: 5px;
+  border: none;
+  background-color: #f2f2f2;
+  padding: 15px;
+}
+#selected-tags {
+  border: 2px solid blue;
+  margin: 25px;
+}
+
+#secondary-search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10%;
+}
+
+.ingredient-label input,
+.appareil-label input,
+.utensil-label input {
+  height: 50px;
+  margin-left: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.ingredient-label input {
+  background-color: #3282f7;
+}
+.appareil-label input {
+  background-color: #68d9a4;
+}
+
+.utensil-label input {
+  background-color: #ed6454;
+}

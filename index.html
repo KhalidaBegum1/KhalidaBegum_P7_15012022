@@ -4,19 +4,72 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="plats recettes ingredients" />
     <meta
       name="description"
       content="Les Petits Plats sites de recettes de cuisine "
     />
     <meta name="author" content="Khalida Begum" />
     <title>Les petits plats</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="CSS/main.css" />
   </head>
   <body>
     <header>
-      <img src="Assets/logo (1).png" alt="Logo les petits plats" />
+      <h1>
+        <img
+          src="Assets/logo (1).png"
+          alt="Logo les petits plats, red chefs hat above the title les petits plats"
+        />
+      </h1>
+      <div id="main-search">
+        <input
+          id="main-search_input"
+          placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
+        />
+        <label id="main-search_label" for="main-search_input"></label>
+      </div>
+      <ul id="selected-tags">
+        tags
+      </ul>
+      <div id="secondary-search">
+        <div class="ingredient-label" id="ingredients-filter">
+          <input type="search" placeholder="Ingredients" /><button
+            class="ingredient-btn"
+          ></button>
+        </div>
+        <div class="appareil-label" id="appareils-filter">
+          <input type="search" placeholder="Appareils" />
+          <button class="appareils-btn"></button>
+        </div>
+        <div class="utensil-label" id="utensils-filter">
+          <input type="search" placeholder="Utensils" />
+          <button class="utensils-btn"></button>
+        </div>
+      </div>
     </header>
-    <main>
-      <script src="./Scripts/recipes.js" type="module"></script>
-    </main>
+    <main></main>
+
+    <script src="./Scripts/recipes.js" type="module"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
