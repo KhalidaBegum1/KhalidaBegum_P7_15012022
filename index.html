@@ -18,6 +18,10 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="CSS/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
   </head>
   <body>
     <header>
@@ -32,30 +36,46 @@
           id="main-search_input"
           placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette"
         />
+        <span><i class="fas fa-search"></i></span>
         <label id="main-search_label" for="main-search_input"></label>
       </div>
-      <ul id="selected-tags">
+
+      <ul id="selected-tags-list">
         tags
       </ul>
       <div id="secondary-search">
         <div class="ingredient-label" id="ingredients-filter">
-          <input type="search" placeholder="Ingredients" /><button
-            class="ingredient-btn"
-          ></button>
+          <input
+            class="label-input"
+            type="search"
+            placeholder="Ingredients"
+          /><button class="label-btn" id="ingredients-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
         </div>
         <div class="appareil-label" id="appareils-filter">
-          <input type="search" placeholder="Appareils" />
-          <button class="appareils-btn"></button>
+          <input class="label-input" type="search" placeholder="Appareils" />
+          <button class="label-btn" id="appareils-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
         </div>
         <div class="utensil-label" id="utensils-filter">
-          <input type="search" placeholder="Utensils" />
-          <button class="utensils-btn"></button>
+          <input class="label-input" type="search" placeholder="Utensils" />
+          <button class="label-btn" id="utensils-btn">
+            <i class="fas fa-chevron-down"></i>
+          </button>
         </div>
       </div>
     </header>
-    <main></main>
+    <main>
+      <section>
+        <article>
 
-    <script src="./Scripts/recipes.js" type="module"></script>
+        </article>
+      </section>
+    </main>
+
+    <script src="./Scripts/main.js" type="module"></script>
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
       integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
