@@ -12,6 +12,7 @@ h1 {
 }
 h1 img {
   width: 75%;
+  margin: 30px;
 }
 
 #main-search {
@@ -33,7 +34,7 @@ h1 img {
   font-size: 24px;
 }
 
-#selected-tags-list {
+#selected-tags_list {
   border: 2px solid blue;
   margin: 25px;
 }
@@ -49,8 +50,8 @@ h1 img {
 .appareil-label input,
 .utensil-label input {
   height: 4em;
-  width: 9em;
-  margin: 20px;
+  width: 7em;
+  margin: 15px;
   padding: 10px;
   border-radius: 5px;
 }
@@ -93,6 +94,15 @@ h1 img {
 @media screen and (min-width: 599px) {
   h1 img {
     width: 45%;
+  }
+  .ingredient-label input,
+  .appareil-label input,
+  .utensil-label input {
+    height: 4em;
+    width: 9em;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 5px;
   }
 }
 
