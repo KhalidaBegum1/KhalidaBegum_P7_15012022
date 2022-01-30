@@ -90,6 +90,58 @@ h1 img {
   color: #ffffff;
   background-color: #3282f7;
 }
+.blank {
+  border: 2px solid black;
+}
+#recipes {
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
+  justify-content: space-evenly;
+  margin: 25px;
+}
+.recipe-section {
+  overflow: scroll;
+  justify-content: space-evenly;
+  border-top: 130px solid rgb(133, 129, 129);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 20px;
+  max-width: 250px;
+  max-height: 250px;
+  background-color: #d8d6d6c5;
+}
+.title-section {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  align-items: center;
+}
+.text-section {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+.recipe-name {
+  font-size: 14px;
+  font-weight: 100;
+  margin: 10px;
+}
+.fa-clock {
+  font-size: 16px;
+  margin: 3px;
+}
+.recipe-time {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px;
+}
+.recipe-ingredient {
+  font-size: 12px;
+  margin: 10px;
+}
+
+.recipe-description {
+  font-size: 12px;
+  margin: 10px;
+}
 
 @media screen and (min-width: 599px) {
   h1 img {
@@ -115,5 +167,23 @@ h1 img {
     flex-direction: row;
     justify-content: left;
     align-items: center;
+  }
+  .recipe-section {
+    max-width: 400px;
+    max-height: 350px;
+  }
+  .recipe-name {
+    font-size: 18px;
+    font-weight: 100;
+    margin: 10px;
+  }
+  .fa-clock {
+    font-size: 20px;
+    margin: 3px;
+  }
+  .recipe-time {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px;
   }
 }
