@@ -38,7 +38,7 @@ function search(event) {
           <span> ${ingredient.quantity}</span> 
           <span>${ingredient.unit}</span> `;
         }
-        recipeSection.innerHTML += `<div class="recipe-section" >
+        recipeSection.innerHTML = `<div class="recipe-section" >
         <span class="title-section" ><div class="recipe-name">${recipes[i].name}  </div>
         <span class="recipe-time"><i class="far fa-clock"></i> ${recipes[i].time} min </span> </span>
         <span class="text-section"><div class="recipe-ingredient">
@@ -51,19 +51,25 @@ function search(event) {
 }
 
 let i = 0;
-recipes.length;
-i++;
+//recipes.length;
+//i++;
+
 let j = 0;
-recipes[i].ingredients.length;
-j++;
+//recipes[i].ingredients.length;
+//j++;
 let ingredient = recipes[i].ingredients[j];
+
+/*let i = recipes.length ++;
+let j = recipes.ingredients.length ++;
+let ingredient = recipes[i].ingredients[j];*/
 
 recipes.forEach((recipes) => {
   recipeSection.innerHTML += ` 
   <div class="recipe-section" >
   <span class="title-section" ><div class="recipe-name">${recipes.name}  </div>
   <span class="recipe-time"><i class="far fa-clock"></i> ${recipes.time} min </span> </span>
-  <span class="text-section"><div class="recipe-ingredient">  ${ingredient.ingredient}
+  <span class="text-section"><div class="recipe-ingredient"> 
+   ${ingredient.ingredient}
   <span> ${ingredient.quantity}</span> 
   <span>${ingredient.unit}</span> </div>
   <div class="recipe-description">  ${recipes.description}  </div></span>
