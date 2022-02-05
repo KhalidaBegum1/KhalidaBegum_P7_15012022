@@ -58,13 +58,16 @@ h1 img {
 
 .ingredient-label input {
   background-color: #3282f7;
+  border: none;
 }
 .appareil-label input {
   background-color: #68d9a4;
+  border: none;
 }
 
 .utensil-label input {
   background-color: #ed6454;
+  border: none;
 }
 
 #utensils-btn {
@@ -142,6 +145,54 @@ h1 img {
 .recipe-description {
   font-size: 12px;
   margin: 10px;
+}
+
+.search-ingredient {
+  display: none;
+  background-color: #3282f7;
+  position: absolute;
+  top: 47%;
+  left: 2%;
+  width: 50%;
+  height: 30%;
+  z-index: 1;
+  overflow: auto;
+}
+.search-appareil{
+  display: none;
+  background-color: #68d9a4;;
+  position: absolute;
+  top: 47%;
+  left: 2%;
+  width: 50%;
+  height: 30%;
+  z-index: 1;
+  overflow: auto;
+}
+.search-utensil{
+  display: none;
+  background-color: #ed6454;
+  position: absolute;
+  top: 47%;
+  left: 2%;
+  width: 50%;
+  height: 30%;
+  z-index: 1;
+  overflow: auto;
+}
+.search-close {
+  position: absolute;
+  font-size: 30px;
+  right: 25px;
+  top: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+.search-container {
+  background-color: #fff;
+  margin-top: 50px;
 }
 
 @media screen and (min-width: 599px) {

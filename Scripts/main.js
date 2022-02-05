@@ -78,10 +78,18 @@ recipes.forEach((recipes) => {
 });
 
 const dropSearch = document.querySelectorAll(".label-btn");
-const dropBg = document.querySelectorAll(".secondary-search_label");
+const closeSearch = document.querySelector(".search-close");
+const dropIngredient = document.querySelector(".search-ingredient");
+const dropAppareil = document.querySelector(".search-appareil");
+const dropUtensil = document.querySelector(".search-utensil");
 dropSearch.forEach((btn) =>
   btn.addEventListener("click", () => {
-    dropBg.style.display = "block";
+    dropIngredient.style.display = "block";
     console.log("test");
   })
 );
+
+function closeBox() {
+  dropIngredient.style.display = "none";
+}
+closeSearch.addEventListener("click", closeBox);
