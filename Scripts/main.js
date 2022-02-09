@@ -57,21 +57,23 @@ let i = 0;
 let j = 0;
 //recipes[i].ingredients.length;
 //j++;
-let ingredient = recipes[i].ingredients[j];
 
 /*let i = recipes.length ++;
 let j = recipes.ingredients.length ++;
 let ingredient = recipes[i].ingredients[j];*/
+let ingredient = recipes[i].ingredients[j];
+let textIngredients = "";
+textIngredients += ` ${ingredient.ingredient}
+<span> ${ingredient.quantity}</span> 
+<span>${ingredient.unit}</span> `;
 
 recipes.forEach((recipes) => {
   recipeSection.innerHTML += ` 
   <div class="recipe-section" >
   <span class="title-section" ><div class="recipe-name">${recipes.name}  </div>
   <span class="recipe-time"><i class="far fa-clock"></i> ${recipes.time} min </span> </span>
-  <span class="text-section"><div class="recipe-ingredient"> 
-   ${ingredient.ingredient}
-  <span> ${ingredient.quantity}</span> 
-  <span>${ingredient.unit}</span> </div>
+  <span class="text-section"><div class="recipe-ingredient">   ${textIngredients}
+  </div>
   <div class="recipe-description">  ${recipes.description}  </div></span>
   </div>
   `;
