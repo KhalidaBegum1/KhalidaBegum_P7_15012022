@@ -12,69 +12,59 @@ function search(event) {
   const word = mainSearch.value;
   if (word.length >= 3) {
     recipeSection.innerHTML = "";
-    for (let i = 0; i < recipes.length; i++) {
-      if (recipes[i].name.toLowerCase().includes(word.toLowerCase())) {
+    recipes.forEach((recipe) => {
+      if (recipe.name.toLowerCase().includes(word.toLowerCase())) {
         let textIngredients = "";
-        for (let j = 0; j < recipes[i].ingredients.length; j++) {
-          let ingredient = recipes[i].ingredients[j];
+        recipe.ingredients.forEach((ingredient) => {
           textIngredients += ` ${ingredient.ingredient}
           <span> ${ingredient.quantity}</span> 
           <span>${ingredient.unit}</span> `;
-        }
+        });
         recipeSection.innerHTML += `<div class="recipe-section" >
-        <span class="title-section" ><div class="recipe-name">${recipes[i].name}  </div>
-        <span class="recipe-time"><i class="far fa-clock"></i> ${recipes[i].time} min </span> </span>
+        <span class="title-section" ><div class="recipe-name">${recipe.name}  </div>
+        <span class="recipe-time"><i class="far fa-clock"></i> ${recipe.time} min </span> </span>
         <span class="text-section"> <div class="recipe-ingredient"> 
        ${textIngredients}</div>
-         <div class="recipe-description">  ${recipes[i].description}  </div></span>
+         <div class="recipe-description">  ${recipe.description}  </div></span>
         </div>`;
       } else if (
-        recipes[i].description.toLowerCase().includes(word.toLowerCase())
+        recipe.description.toLowerCase().includes(word.toLowerCase())
       ) {
         let textIngredients = "";
-        for (let j = 0; j < recipes[i].ingredients.length; j++) {
-          let ingredient = recipes[i].ingredients[j];
+        recipe.ingredients.forEach((ingredient) => {
           textIngredients += ` ${ingredient.ingredient}
           <span> ${ingredient.quantity}</span> 
           <span>${ingredient.unit}</span> `;
-        }
+        });
         recipeSection.innerHTML += `<div class="recipe-section" >
-        <span class="title-section" ><div class="recipe-name">${recipes[i].name}  </div>
-        <span class="recipe-time"><i class="far fa-clock"></i> ${recipes[i].time} min </span> </span>
+        <span class="title-section" ><div class="recipe-name">${recipe.name}  </div>
+        <span class="recipe-time"><i class="far fa-clock"></i> ${recipe.time} min </span> </span>
         <span class="text-section"><div class="recipe-ingredient">
        ${textIngredients}</div>
-         <div class="recipe-description">  ${recipes[i].description}  </div></span>
+         <div class="recipe-description">  ${recipe.description}  </div></span>
         </div>`;
       } else {
-        let ingredientFiltered = [];
-        for (let k = 0; k < recipes[i].ingredients.length; k++) {
-          if (
-            recipes[i].ingredients[k].ingredient
-              .toLowerCase()
-              .includes(word.toLowerCase())
-          ) {
-            ingredientFiltered.push(recipes[i].ingredients[k]);
-          }
-        }
+        let ingredientFiltered = recipe.ingredients.filter((ing) =>
+          ing.ingredient.toLowerCase().includes(word.toLowerCase())
+        );
 
         if (ingredientFiltered.length > 0) {
           let textIngredients = "";
-          for (let j = 0; j < recipes[i].ingredients.length; j++) {
-            let ingredient = recipes[i].ingredients[j];
+          recipe.ingredients.forEach((ingredient) => {
             textIngredients += ` ${ingredient.ingredient}
-          <span> ${ingredient.quantity}</span> 
-          <span>${ingredient.unit}</span> `;
-          }
+            <span> ${ingredient.quantity}</span> 
+            <span>${ingredient.unit}</span> `;
+          });
           recipeSection.innerHTML += `<div class="recipe-section" >
-        <span class="title-section" ><div class="recipe-name">${recipes[i].name}  </div>
-        <span class="recipe-time"><i class="far fa-clock"></i> ${recipes[i].time} min </span> </span>
+        <span class="title-section" ><div class="recipe-name">${recipe.name}  </div>
+        <span class="recipe-time"><i class="far fa-clock"></i> ${recipe.time} min </span> </span>
         <span class="text-section"><div class="recipe-ingredient">
        ${textIngredients}</div>
-         <div class="recipe-description">  ${recipes[i].description}  </div></span>
+         <div class="recipe-description">  ${recipe.description}  </div></span>
         </div>`;
         }
       }
-    }
+    });
   }
 }
 
@@ -95,10 +85,6 @@ recipes.forEach((recipes) => {
   </div>
   `;
 });
-
-/*let ingredientFiltered = recipes[i].ingredients.filter((ing) =>
-          ing.ingredient.toLowerCase().includes(word.toLowerCase())
-        );*/
 
 let dropSearch = document.querySelectorAll(".label-btn");
 const closeSearch = document.querySelector(".search-close");
