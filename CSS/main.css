@@ -158,9 +158,9 @@ h1 img {
   z-index: 1;
   overflow: auto;
 }
-.search-appareil{
+.search-appareil {
   display: none;
-  background-color: #68d9a4;;
+  background-color: #68d9a4;
   position: absolute;
   top: 47%;
   left: 2%;
@@ -169,7 +169,7 @@ h1 img {
   z-index: 1;
   overflow: auto;
 }
-.search-utensil{
+.search-utensil {
   display: none;
   background-color: #ed6454;
   position: absolute;
@@ -193,6 +193,15 @@ h1 img {
 .search-container {
   background-color: #fff;
   margin-top: 50px;
+}
+.search-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.search-list li {
+  margin: 5px;
+  list-style: none;
 }
 
 @media screen and (min-width: 599px) {
