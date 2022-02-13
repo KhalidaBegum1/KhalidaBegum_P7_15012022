@@ -96,10 +96,6 @@ recipes.forEach((recipes) => {
   `;
 });
 
-/*let ingredientFiltered = recipes[i].ingredients.filter((ing) =>
-          ing.ingredient.toLowerCase().includes(word.toLowerCase())
-        );*/
-
 let dropSearch = document.querySelectorAll(".label-btn");
 const closeSearch = document.querySelector(".search-close");
 const dropIngredient = document.querySelector(".search-ingredient");
@@ -108,10 +104,17 @@ const dropUtensil = document.querySelector(".search-utensil");
 const igBtn = document.getElementById("ingredients-btn");
 const appBtn = document.getElementById("appareils-btn");
 const utenBtn = document.getElementById("utensils-btn");
+let ingFilter = document.querySelector("#ingredients-filter");
+let ingredientTag = recipes.ingredient;
 
 dropSearch.forEach((btn) => {
   btn.addEventListener("click", () => {
+    ingFilter.innerHTML += `<div class="search-text" id="ingredients-filter"> 
+    <ul class="search-list">
+    <li> ${ingredientTag}</li>
+    </ul></div> `;
     dropIngredient.style.display = "block";
+    console.log(ingredientTag);
   });
 });
 
