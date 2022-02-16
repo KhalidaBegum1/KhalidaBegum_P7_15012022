@@ -38,21 +38,74 @@ const getIngFilterTags = (ingredients) => {
 let ingFilter = document.querySelector("#ingredients-filter");
 
 ingFilter.forEach((ingFilter) => {
-    let ingredientTag = [];
-    recipes.ingredients.forEach((ingredient) => {
-        ingredientTag += ` ${ingredient.ingredient}
+  let ingredientTag = [];
+  recipes.ingredients.forEach((ingredient) => {
+    ingredientTag += ` ${ingredient.ingredient}
        `;
-      });
-      ingFilter.innerHTML += `<div class="search-text" id="ingredients-filter"> 
+  });
+  ingFilter.innerHTML += `<div class="search-text" id="ingredients-filter"> 
       <ul class="search-list">
       <li> ${ingredientTag}</li>
       </ul></div> `;
-      dropIngredient.style.display = "block";
-      console.log(ingredientTag);
-  });
+  dropIngredient.style.display = "block";
+  console.log(ingredientTag);
+});
 
 let ingredientTag = [];
-  recipes.ingredients.forEach((ingredient) => {
-    ingredientTag += ` ${ingredient.ingredient}
+recipes.ingredients.forEach((ingredient) => {
+  ingredientTag += ` ${ingredient.ingredient}
    `;
+});
+
+/*function sorted(filter, button) {
+  button.addEventListener("click", () => {
+   // document.querySelector("#portfolio").innerHTML = ""; 
+
+    if (filter === "ingredient") {
+      recipes.ingredient.sort((a, b) => (a.ingredient > b.ingredient ? -1 : 1)); 
+    }
+
+    if (filter === "appareil") {
+      recipes.appareil.sort((a, b) => (a.appareil > b.appareil ? 1 : -1));
+    }
+    if (filter === "ustensils") {
+     recipes.ustensils.sort((a, b) => (a.ustensils > b.ustensils ? 1 : -1)); 
+    }
+  })
+};
+
+
+
+sorted("ingredient", ingFilter);
+sorted("appareil", appFilter);
+sorted("ustensils", ustFilter);*/
+const toFilterRecipesFromTags = (tags, recipes) => {
+  let currentRecipesFromTags = new Set();
+  tags.forEach((t) => {
+    switch (t.type) {
+      case "Ingredients":
+        console.log(t.type);
+        recipes.map((recipe) =>
+          recipe.ingredients
+            .filter((ings) => ings.ingredient.includes(t.name))
+            .map(() => currentRecipesFromTags.add(recipe))
+        );
+        break;
+      case "Appliance":
+        recipes
+          .filter((recipe) => recipe.appliance.includes(t.name))
+          .map((appl) => currentRecipesFromTags.add(appl));
+        break;
+      case "Ustensils":
+        recipes.map((recipe) =>
+          recipe.ustensils
+            .filter((ust) => ust.includes(t.name))
+            .map((to) => currentRecipesFromTags.add(recipe))
+        );
+        break;
+      default:
+        console.log("c'est pas bon");
+    }
   });
+  return [...currentRecipesFromTags];
+};

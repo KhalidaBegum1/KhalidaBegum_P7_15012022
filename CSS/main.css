@@ -180,7 +180,8 @@ h1 img {
   z-index: 1;
   overflow: auto;
 }
-.search-close {
+
+.close-btn {
   position: absolute;
   font-size: 30px;
   right: 25px;
@@ -195,9 +196,8 @@ h1 img {
   margin-top: 50px;
 }
 .search-list {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 33%);
 }
 .search-list li {
   margin: 5px;
