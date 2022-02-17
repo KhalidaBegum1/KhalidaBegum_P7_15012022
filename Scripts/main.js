@@ -1,4 +1,5 @@
 import { recipes } from "./recipes.js";
+//import { launchIng, launchApp, launchUst, closeBox } from "./filter.js";
 const mainSearch = document.querySelector("#main-search_input");
 const secondarySearch = document.querySelectorAll(".label-input");
 const selectedTagsContainer = document.getElementById("selected-tags-list");
@@ -63,7 +64,7 @@ function search(event) {
             let ingredient = recipes[i].ingredients[j];
             textIngredients += ` ${ingredient.ingredient}
           <span> ${ingredient.quantity}</span> 
-          <span>${ingredient.unit}</span> `;
+          <span>${ingredient.unit}</span>`;
           }
           recipeSection.innerHTML += `<div class="recipe-section" >
         <span class="title-section" ><div class="recipe-name">${recipes[i].name}  </div>
@@ -83,7 +84,7 @@ recipes.forEach((recipes) => {
   recipes.ingredients.forEach((ingredient) => {
     textIngredients += ` ${ingredient.ingredient}
     <span> ${ingredient.quantity}</span> 
-    <span>${ingredient.unit}</span> `;
+    <span>${ingredient.unit}</span>`;
   });
   recipeSection.innerHTML += ` 
   <div class="recipe-section" >
@@ -110,12 +111,12 @@ let appFilter = document.querySelector("#appareils-filter");
 let ustFilter = document.querySelector("#utensils-filter");
 let recipeAppliance = "";
 let recipeIngredient = "";
-let recipeUtensils = [];
+let recipeUtensils = [""];
 
 function launchIng() {
   dropIngredient.style.display = "block";
   recipes.ingredients.forEach((ingredient) => {
-    recipeIngredient += `${ingredient.ingredient}`;
+    recipeIngredient += `<li><a href="#">${ingredient.ingredient}</a></li>`;
   });
   ingFilter.innerHTML += `<div class="search-text" id="ingredients-filter"> 
   <ul class="search-list">
@@ -127,7 +128,7 @@ igBtn.addEventListener("click", launchIng);
 function launchApp() {
   dropAppareil.style.display = "block";
   recipes.forEach((recipes) => {
-    recipeAppliance += `${recipes.appliance}`;
+    recipeAppliance += `<li><a href="#">${recipes.appliance}</a></li>`;
   });
   appFilter.innerHTML += `<div class="search-text" id="appareils-filter"> 
   <ul class="search-list">
@@ -139,10 +140,10 @@ appBtn.addEventListener("click", launchApp);
 function launchUst() {
   dropUtensil.style.display = "block";
   recipes.forEach((recipes) => {
-    recipeUtensils += `${recipes.ustensils}`;
+    recipeUtensils += `<li><a href="#">${recipes.ustensils}</a></li>`;
   });
   ustFilter.innerHTML += `<div class="search-text" id="utensils-filter"> 
-  <ul class="search-list">
+  <ul class="search-list_uten">
   <li> ${recipeUtensils}</li>
   </ul></div> `;
 }
@@ -157,5 +158,11 @@ closeSearch.addEventListener("click", closeBox);
 /*closeSearch.forEach((btn) => {
   btn.addEventListener("click", () => {
     dropSearch.style.display = "none";
+  });
+});
+
+/*dropSearch.forEach((btn) => {
+  btn.addEventListener("click", () => {
+   displaySearch.style.display = "block";
   });
 });*/

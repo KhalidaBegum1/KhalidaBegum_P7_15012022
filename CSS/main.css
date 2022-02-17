@@ -191,16 +191,41 @@ h1 img {
   border: none;
   background-color: transparent;
 }
-.search-container {
-  background-color: #fff;
+.search-container_bl {
+  color: #fff;
+  background-color: #3282f7;
   margin-top: 50px;
 }
+.search-container_gr {
+  background-color: #68d9a4;
+  margin-top: 50px;
+}
+.search-container_or {
+  background-color: #ed6454;
+  margin-top: 50px;
+}
+.search-container_bl a,
+.search-container_gr a,
+.search-container_or a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .search-list {
   display: grid;
   grid-template-columns: repeat(3, 33%);
+  overflow: auto;
+}
+.search-list_uten {
+  display: grid;
+  grid-template-columns: repeat(2, 45%);
+  overflow: auto;
+  grid-gap: 20px;
+  list-style: none;
+  margin-left: 15px;
 }
 .search-list li {
-  margin: 5px;
+  margin: 5px 20px;
   list-style: none;
 }
 

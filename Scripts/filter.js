@@ -1,111 +1,74 @@
-const selectedTagsContainer = document.getElementById("selected-tags-list");
-const secondarySearch = document.querySelectorAll(".label-input");
-let ingFilter = document.querySelector("#ingredients-filter");
-let dropSearch = document.querySelectorAll(".label-btn");
-const closeSearch = document.querySelector(".search-close");
+let dropSearch = document.querySelector(".label-btn");
+let closeSearch = document.querySelector(".close-btn");
 const dropIngredient = document.querySelector(".search-ingredient");
 const dropAppareil = document.querySelector(".search-appareil");
 const dropUtensil = document.querySelector(".search-utensil");
+const displaySearch = document.querySelector(".display-search");
 const igBtn = document.getElementById("ingredients-btn");
 const appBtn = document.getElementById("appareils-btn");
 const utenBtn = document.getElementById("utensils-btn");
-
-dropSearch.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    dropIngredient.style.display = "block";
-    ingFilter = recipes[i].ingredients[j];
-  });
-});
-
-function closeBox() {
-  dropIngredient.style.display = "none";
-}
-closeSearch.addEventListener("click", closeBox);
-
-const getIngFilterTags = (ingredients) => {
-  return ingredients.ingredient
-    .map((ingredient) => {
-      return ` <div class="search-text">
-          <ul class="search-list">
-            <li> ${ingredient}</li>
-            
-          </ul>
-        </div> `;
-    })
-    .join("");
-};
-
 let ingFilter = document.querySelector("#ingredients-filter");
+let appFilter = document.querySelector("#appareils-filter");
+let ustFilter = document.querySelector("#utensils-filter");
+let recipeAppliance = "";
+let recipeIngredient = "";
+let recipeUtensils = [];
 
-ingFilter.forEach((ingFilter) => {
-  let ingredientTag = [];
+export function launchIng() {
+  dropIngredient.style.display = "block";
   recipes.ingredients.forEach((ingredient) => {
-    ingredientTag += ` ${ingredient.ingredient}
-       `;
+    recipeIngredient += `${ingredient.ingredient}`;
   });
   ingFilter.innerHTML += `<div class="search-text" id="ingredients-filter"> 
-      <ul class="search-list">
-      <li> ${ingredientTag}</li>
-      </ul></div> `;
-  dropIngredient.style.display = "block";
-  console.log(ingredientTag);
-});
+  <ul class="search-list">
+  <li> ${recipeIngredient}</li>
+  </ul></div> `;
+}
+igBtn.addEventListener("click", launchIng);
 
-let ingredientTag = [];
-recipes.ingredients.forEach((ingredient) => {
-  ingredientTag += ` ${ingredient.ingredient}
-   `;
-});
-
-/*function sorted(filter, button) {
-  button.addEventListener("click", () => {
-   // document.querySelector("#portfolio").innerHTML = ""; 
-
-    if (filter === "ingredient") {
-      recipes.ingredient.sort((a, b) => (a.ingredient > b.ingredient ? -1 : 1)); 
-    }
-
-    if (filter === "appareil") {
-      recipes.appareil.sort((a, b) => (a.appareil > b.appareil ? 1 : -1));
-    }
-    if (filter === "ustensils") {
-     recipes.ustensils.sort((a, b) => (a.ustensils > b.ustensils ? 1 : -1)); 
-    }
-  })
-};
-
-
-
-sorted("ingredient", ingFilter);
-sorted("appareil", appFilter);
-sorted("ustensils", ustFilter);*/
-const toFilterRecipesFromTags = (tags, recipes) => {
-  let currentRecipesFromTags = new Set();
-  tags.forEach((t) => {
-    switch (t.type) {
-      case "Ingredients":
-        console.log(t.type);
-        recipes.map((recipe) =>
-          recipe.ingredients
-            .filter((ings) => ings.ingredient.includes(t.name))
-            .map(() => currentRecipesFromTags.add(recipe))
-        );
-        break;
-      case "Appliance":
-        recipes
-          .filter((recipe) => recipe.appliance.includes(t.name))
-          .map((appl) => currentRecipesFromTags.add(appl));
-        break;
-      case "Ustensils":
-        recipes.map((recipe) =>
-          recipe.ustensils
-            .filter((ust) => ust.includes(t.name))
-            .map((to) => currentRecipesFromTags.add(recipe))
-        );
-        break;
-      default:
-        console.log("c'est pas bon");
-    }
+export function launchApp() {
+  dropAppareil.style.display = "block";
+  recipes.forEach((recipes) => {
+    recipeAppliance += `${recipes.appliance}`;
   });
-  return [...currentRecipesFromTags];
-};
+  appFilter.innerHTML += `<div class="search-text" id="appareils-filter"> 
+  <ul class="search-list">
+  <li> ${recipeAppliance}</li>
+  </ul></div> `;
+}
+appBtn.addEventListener("click", launchApp);
+
+export function launchUst() {
+  dropUtensil.style.display = "block";
+  recipes.forEach((recipes) => {
+    recipeUtensils += `${recipes.ustensils}`;
+  });
+  ustFilter.innerHTML += `<div class="search-text" id="utensils-filter"> 
+  <ul class="search-list">
+  <li> ${recipeUtensils}</li>
+  </ul></div> `;
+}
+utenBtn.addEventListener("click", launchUst);
+
+export function closeBox() {
+  displaySearch.style.display = "none";
+}
+closeSearch.addEventListener("click", closeBox);
+//closeSearch.forEach((btn) => btn.addEventListener("click", closeBox));
+
+/*closeSearch.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    dropSearch.style.display = "none";
+  });
+});*/
+function toUniqueArray(a){
+  var newArr = [];
+  for (var i = 0; i < a.length; i++) {
+      if (newArr.indexOf(a[i]) === -1) {
+          newArr.push(a[i]);
+      }
+  }
+return newArr;
+}
+var colors = ["red","red","green","green","green"];
+var colorsUnique = toUniqueArray(colors); // ["red","green"]
