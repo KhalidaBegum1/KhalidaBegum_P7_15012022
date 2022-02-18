@@ -1,9 +1,8 @@
-let dropSearch = document.querySelector(".label-btn");
-let closeSearch = document.querySelector(".close-btn");
+import { recipes } from "./recipes.js";
+let closeSearch = document.querySelectorAll(".close-btn");
 const dropIngredient = document.querySelector(".search-ingredient");
 const dropAppareil = document.querySelector(".search-appareil");
 const dropUtensil = document.querySelector(".search-utensil");
-const displaySearch = document.querySelector(".display-search");
 const igBtn = document.getElementById("ingredients-btn");
 const appBtn = document.getElementById("appareils-btn");
 const utenBtn = document.getElementById("utensils-btn");
@@ -16,9 +15,14 @@ let recipeUtensils = [];
 
 export function launchIng() {
   dropIngredient.style.display = "block";
-  recipes.ingredients.forEach((ingredient) => {
-    recipeIngredient += `${ingredient.ingredient}`;
+  recipes.forEach((recipes) => {
+    recipes.ingredients.forEach((ingredient) => {
+      if (recipeIngredient.includes(ingredient.ingredient) === false) {
+        recipeIngredient += `<li>${ingredient.ingredient}</li>`;
+      }
+    });
   });
+
   ingFilter.innerHTML += `<div class="search-text" id="ingredients-filter"> 
   <ul class="search-list">
   <li> ${recipeIngredient}</li>
@@ -29,7 +33,9 @@ igBtn.addEventListener("click", launchIng);
 export function launchApp() {
   dropAppareil.style.display = "block";
   recipes.forEach((recipes) => {
-    recipeAppliance += `${recipes.appliance}`;
+    if (recipeAppliance.includes(recipes.appliance) === false) {
+      recipeAppliance += `<li>${recipes.appliance}</li>`;
+    }
   });
   appFilter.innerHTML += `<div class="search-text" id="appareils-filter"> 
   <ul class="search-list">
@@ -41,34 +47,23 @@ appBtn.addEventListener("click", launchApp);
 export function launchUst() {
   dropUtensil.style.display = "block";
   recipes.forEach((recipes) => {
-    recipeUtensils += `${recipes.ustensils}`;
+    recipes.ustensils.forEach((ustensil) => {
+      if (recipeUtensils.includes(ustensil) === false) {
+        recipeUtensils += `<li>${ustensil}</li>`;
+      }
+    });
   });
   ustFilter.innerHTML += `<div class="search-text" id="utensils-filter"> 
-  <ul class="search-list">
+  <ul class="search-list_uten">
   <li> ${recipeUtensils}</li>
   </ul></div> `;
 }
 utenBtn.addEventListener("click", launchUst);
 
 export function closeBox() {
-  displaySearch.style.display = "none";
+  dropIngredient.style.display = "none";
+  dropAppareil.style.display = "none";
+  dropUtensil.style.display = "none";
 }
-closeSearch.addEventListener("click", closeBox);
-//closeSearch.forEach((btn) => btn.addEventListener("click", closeBox));
 
-/*closeSearch.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    dropSearch.style.display = "none";
-  });
-});*/
-function toUniqueArray(a){
-  var newArr = [];
-  for (var i = 0; i < a.length; i++) {
-      if (newArr.indexOf(a[i]) === -1) {
-          newArr.push(a[i]);
-      }
-  }
-return newArr;
-}
-var colors = ["red","red","green","green","green"];
-var colorsUnique = toUniqueArray(colors); // ["red","green"]
+closeSearch.forEach((btn) => btn.addEventListener("click", closeBox));

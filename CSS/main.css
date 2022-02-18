@@ -197,18 +197,14 @@ h1 img {
   margin-top: 50px;
 }
 .search-container_gr {
+  color: #fff;
   background-color: #68d9a4;
   margin-top: 50px;
 }
 .search-container_or {
+  color: #fff;
   background-color: #ed6454;
   margin-top: 50px;
-}
-.search-container_bl a,
-.search-container_gr a,
-.search-container_or a {
-  color: #fff;
-  text-decoration: none;
 }
 
 .search-list {

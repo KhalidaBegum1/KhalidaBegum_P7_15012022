@@ -1,5 +1,4 @@
 import { recipes } from "./recipes.js";
-//import { launchIng, launchApp, launchUst, closeBox } from "./filter.js";
 const mainSearch = document.querySelector("#main-search_input");
 const secondarySearch = document.querySelectorAll(".label-input");
 const selectedTagsContainer = document.getElementById("selected-tags-list");
@@ -96,73 +95,3 @@ recipes.forEach((recipes) => {
   </div>
   `;
 });
-
-let dropSearch = document.querySelector(".label-btn");
-let closeSearch = document.querySelector(".close-btn");
-const dropIngredient = document.querySelector(".search-ingredient");
-const dropAppareil = document.querySelector(".search-appareil");
-const dropUtensil = document.querySelector(".search-utensil");
-const displaySearch = document.querySelector(".display-search");
-const igBtn = document.getElementById("ingredients-btn");
-const appBtn = document.getElementById("appareils-btn");
-const utenBtn = document.getElementById("utensils-btn");
-let ingFilter = document.querySelector("#ingredients-filter");
-let appFilter = document.querySelector("#appareils-filter");
-let ustFilter = document.querySelector("#utensils-filter");
-let recipeAppliance = "";
-let recipeIngredient = "";
-let recipeUtensils = [""];
-
-function launchIng() {
-  dropIngredient.style.display = "block";
-  recipes.ingredients.forEach((ingredient) => {
-    recipeIngredient += `<li><a href="#">${ingredient.ingredient}</a></li>`;
-  });
-  ingFilter.innerHTML += `<div class="search-text" id="ingredients-filter"> 
-  <ul class="search-list">
-  <li> ${recipeIngredient}</li>
-  </ul></div> `;
-}
-igBtn.addEventListener("click", launchIng);
-
-function launchApp() {
-  dropAppareil.style.display = "block";
-  recipes.forEach((recipes) => {
-    recipeAppliance += `<li><a href="#">${recipes.appliance}</a></li>`;
-  });
-  appFilter.innerHTML += `<div class="search-text" id="appareils-filter"> 
-  <ul class="search-list">
-  <li> ${recipeAppliance}</li>
-  </ul></div> `;
-}
-appBtn.addEventListener("click", launchApp);
-
-function launchUst() {
-  dropUtensil.style.display = "block";
-  recipes.forEach((recipes) => {
-    recipeUtensils += `<li><a href="#">${recipes.ustensils}</a></li>`;
-  });
-  ustFilter.innerHTML += `<div class="search-text" id="utensils-filter"> 
-  <ul class="search-list_uten">
-  <li> ${recipeUtensils}</li>
-  </ul></div> `;
-}
-utenBtn.addEventListener("click", launchUst);
-
-function closeBox() {
-  displaySearch.style.display = "none";
-}
-closeSearch.addEventListener("click", closeBox);
-//closeSearch.forEach((btn) => btn.addEventListener("click", closeBox));
-
-/*closeSearch.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    dropSearch.style.display = "none";
-  });
-});
-
-/*dropSearch.forEach((btn) => {
-  btn.addEventListener("click", () => {
-   displaySearch.style.display = "block";
-  });
-});*/
