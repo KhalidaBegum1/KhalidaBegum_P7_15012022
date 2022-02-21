@@ -35,8 +35,40 @@ h1 img {
 }
 
 #selected-tags_list {
-  border: 2px solid blue;
+  display: flex;
+  flex-direction: row;
   margin: 25px;
+  list-style: none;
+}
+
+#selected-tags_list li {
+  cursor: pointer;
+  margin-bottom: 15px;
+  margin-right: 15px;
+}
+
+.ingredient-tags {
+  background-color: #3282f7;
+  padding: 20px;
+  border-radius: 8px;
+}
+.appliance-tags {
+  background-color: #68d9a4;
+  padding: 20px;
+  border-radius: 8px;
+}
+.ustensils-tags {
+  background-color: #ed6454;
+  padding: 20px;
+  border-radius: 8px;
+}
+.tag-label {
+  height: 6px;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #fff;
+  padding: 8px 40px 0 15px;
+  cursor: pointer;
 }
 
 #secondary-search {
@@ -46,9 +78,7 @@ h1 img {
   align-items: center;
 }
 
-.ingredient-label input,
-.appareil-label input,
-.utensil-label input {
+.label-input {
   height: 4em;
   width: 7em;
   margin: 15px;
@@ -58,40 +88,36 @@ h1 img {
 
 .ingredient-label input {
   background-color: #3282f7;
+  color: #fff;
   border: none;
 }
 .appareil-label input {
   background-color: #68d9a4;
+  color: #fff;
   border: none;
 }
 
 .utensil-label input {
   background-color: #ed6454;
+  color: #fff;
   border: none;
 }
 
-#utensils-btn {
+.label-btn {
   position: relative;
   top: 40%;
   right: 25%;
   border: none;
   color: #ffffff;
+}
+
+#utensils-btn {
   background-color: #ed6454;
 }
 #appareils-btn {
-  position: relative;
-  top: 40%;
-  right: 25%;
-  border: none;
-  color: #ffffff;
   background-color: #68d9a4;
 }
 #ingredients-btn {
-  position: relative;
-  top: 40%;
-  right: 25%;
-  border: none;
-  color: #ffffff;
   background-color: #3282f7;
 }
 .blank {
@@ -211,6 +237,7 @@ h1 img {
   display: grid;
   grid-template-columns: repeat(3, 33%);
   overflow: auto;
+  cursor: pointer;
 }
 .search-list_uten {
   display: grid;
