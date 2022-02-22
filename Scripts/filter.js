@@ -68,49 +68,20 @@ export function closeBox() {
 
 closeSearch.forEach((btn) => btn.addEventListener("click", closeBox));
 
-const displayTags = (arrayOfObject) => {
-  let fragmentTags = new DocumentFragment();
-  let parentElementTags = document.getElementById("selected-tags");
-  parentElementTags.replaceChildren();
-  arrayOfObject.forEach((obj)=>{
-  let content = createElmtAndAttributs('li', {
-      'class': `tags ${obj.color}`
-  });
-  let inp = createElmtAndAttributs('input', {
-      'class': 'tags-input',
-      'type': 'checkbox',
-      'name': `${obj.name}`,
-      'id': `${obj.name}`
-  });
-  let lbl = createElmtAndAttributs('label', {
-      'class': 'tags-label',
-      'for': `${obj.name}`,
-      'tabindex': '0'
-  });
-  lbl.textContent = obj.name;
+let closeTag = document.querySelectorAll(".close-tag");
+//let tagBox= document.querySelector(".tag-box");
+let ingTag = document.querySelector(".ingredient-tags");
+let appTag = document.querySelector(".appliance-tags");
+let ustTag = document.querySelector(".ustensils-tags");
 
-  append(content, inp);
-  append(content, lbl);
-  append(fragmentTags, content);
-})
-  append(parentElementTags, fragmentTags);
+function fermer() {
+  ingTag.style.display = "none";
+  appTag.style.display = "none";
+  ustTag.style.display = "none";
 }
 
-/**
-* Create Dom object for list of ingredients ustensils materiels 
-* @param {Array String*} listItems 
-* @param {HTML element} elmParent 
-*/
- const displayItems = (listItems, elmParent) => {
-  let fragmentList = new DocumentFragment();
-  elmParent.replaceChildren();
-  listItems.forEach((liItems) => {
-      let li = createElmtAndAttributs('li', {
-          'class': 'label-content__li',
-          'tabindex': '0',
-      });
-      li.textContent = liItems;
-      append(fragmentList, li);
-  })
-  append(elmParent, fragmentList);
-}
+closeTag.forEach((img) => img.addEventListener("click", fermer));
+
+
+
+

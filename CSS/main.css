@@ -71,6 +71,10 @@ h1 img {
   cursor: pointer;
 }
 
+.close-tag{
+  height:20px;
+}
+
 #secondary-search {
   display: flex;
   flex-direction: row;
