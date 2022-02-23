@@ -43,7 +43,8 @@
       </div>
 
       <ul id="selected-tags_list">
-        <div class="tag-box">
+        <section class="tag-box">
+          <div class="tag-container">
           <li class="ingredient-tags">
             tags
             <input class="tag-input" type="checkbox" />
@@ -55,7 +56,9 @@
             />
           </li>
         </div>
-        <div class="tag-box">
+        </section>
+        <section class="tag-box">
+          <div class="tag-container">
           <li class="appliance-tags">
             tags
             <input class="tag-input" type="checkbox" />
@@ -67,7 +70,9 @@
             />
           </li>
         </div>
-        <div class="tag-box">
+        </section>
+        <section class="tag-box">
+          <div class="tag-container">
           <li class="ustensils-tags">
             tags
 
@@ -80,14 +85,13 @@
             />
           </li>
         </div>
+        </section>
       </ul>
       <section class="display-search">
         <div class="search-ingredient">
           <button class="close-btn"><i class="fas fa-chevron-up"></i></button>
           <div class="search-container_bl">
-            <div class="search-text" id="ingredients-filter">
-              <ul class="search-list"></ul>
-            </div>
+            <div class="search-text" id="ingredients-filter"></div>
           </div>
         </div>
       </section>

@@ -34,12 +34,12 @@ export function launchApp() {
   dropAppareil.style.display = "block";
   recipes.forEach((recipes) => {
     if (recipeAppliance.includes(recipes.appliance) === false) {
-      recipeAppliance += `<li>${recipes.appliance}</li>`;
+      recipeAppliance += `<li class="filter-content">${recipes.appliance}</li>`;
     }
   });
   appFilter.innerHTML += `<div class="search-text" id="appareils-filter"> 
   <ul class="search-list">
-  <li> ${recipeAppliance}</li>
+  <li class="filter-content"> ${recipeAppliance}</li>
   </ul></div> `;
 }
 appBtn.addEventListener("click", launchApp);
@@ -69,10 +69,25 @@ export function closeBox() {
 closeSearch.forEach((btn) => btn.addEventListener("click", closeBox));
 
 let closeTag = document.querySelectorAll(".close-tag");
-//let tagBox= document.querySelector(".tag-box");
+let tagBox = document.querySelector(".tag-box");
 let ingTag = document.querySelector(".ingredient-tags");
 let appTag = document.querySelector(".appliance-tags");
 let ustTag = document.querySelector(".ustensils-tags");
+let chosenTag = document.querySelectorAll(".search-list");
+let filterTag = document.querySelectorAll(".filter-content");
+
+filterTag.forEach((t) =>
+  t.addEventListener("click", (e) => {
+    list = e.target.getAttribute("");
+    let tagContainer = document.querySelectorAll(".tag-container");
+
+    tagContainer.innerHTML = filterTag[list].innerHTML;
+    tagBox.style.display = "block";
+    console.log(test);
+  })
+);
+//filterTag.addEventListener("click", displayTag);
+//filterTag.forEach((t) => t.addEventListener("click", displayTag));
 
 function fermer() {
   ingTag.style.display = "none";
@@ -81,7 +96,3 @@ function fermer() {
 }
 
 closeTag.forEach((img) => img.addEventListener("click", fermer));
-
-
-
-
