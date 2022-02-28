@@ -18,14 +18,14 @@ export function launchIng() {
   recipes.forEach((recipes) => {
     recipes.ingredients.forEach((ingredient) => {
       if (recipeIngredient.includes(ingredient.ingredient) === false) {
-        recipeIngredient += `<li>${ingredient.ingredient}</li>`;
+        recipeIngredient += `<li class="filter-content">${ingredient.ingredient}</li>`;
       }
     });
   });
 
   ingFilter.innerHTML += `<div class="search-text" id="ingredients-filter"> 
   <ul class="search-list">
-  <li> ${recipeIngredient}</li>
+  <li class="filter-content"> ${recipeIngredient}</li>
   </ul></div> `;
 }
 igBtn.addEventListener("click", launchIng);
@@ -49,13 +49,13 @@ export function launchUst() {
   recipes.forEach((recipes) => {
     recipes.ustensils.forEach((ustensil) => {
       if (recipeUtensils.includes(ustensil) === false) {
-        recipeUtensils += `<li>${ustensil}</li>`;
+        recipeUtensils += `<li class="filter-content">${ustensil}</li>`;
       }
     });
   });
   ustFilter.innerHTML += `<div class="search-text" id="utensils-filter"> 
   <ul class="search-list_uten">
-  <li> ${recipeUtensils}</li>
+  <li class="filter-content"> ${recipeUtensils}</li>
   </ul></div> `;
 }
 utenBtn.addEventListener("click", launchUst);
@@ -69,25 +69,61 @@ export function closeBox() {
 closeSearch.forEach((btn) => btn.addEventListener("click", closeBox));
 
 let closeTag = document.querySelectorAll(".close-tag");
-let tagBox = document.querySelector(".tag-box");
+let tagBox = document.querySelectorAll(".tag-box");
 let ingTag = document.querySelector(".ingredient-tags");
 let appTag = document.querySelector(".appliance-tags");
 let ustTag = document.querySelector(".ustensils-tags");
-let chosenTag = document.querySelectorAll(".search-list");
+//let chosenTag = document.querySelectorAll(".tag-input");
 let filterTag = document.querySelectorAll(".filter-content");
+//let tagContainer = document.querySelectorAll(".tag-container");
+//let filterList = + URLSearchParams();
+//document.getElementById().parentElement.appendChild();
+//let filterTag = [];
 
-filterTag.forEach((t) =>
+/*filterTag.forEach((t) =>
   t.addEventListener("click", (e) => {
-    list = e.target.getAttribute("");
-    let tagContainer = document.querySelectorAll(".tag-container");
+    //list = e.target.getAttribute("recipes");
+    let tagContainer = document.querySelector(".tag-container");
 
     tagContainer.innerHTML = filterTag[list].innerHTML;
     tagBox.style.display = "block";
     console.log(test);
   })
-);
+);*/
+
+/*filterTag.forEach((t) =>
+  t.addEventListener("click", (e) => {
+  filterTag = e.currentTarget
+      .closest(".search-list")
+      .querySelector(".tag-box");
+    tagBox.style.display = "block";
+  })
+);*/
+
+/*function displayTag() {
+  if ((tagBox.style.display = "block"));
+  {
+    let tagContainer = document.querySelector(".tag-container");
+    tagContainer.innerHTML = filterTag[list].innerHTML;
+    tagBox.style.display = "block";
+  }
+}*/
 //filterTag.addEventListener("click", displayTag);
 //filterTag.forEach((t) => t.addEventListener("click", displayTag));
+/*var tagBox = document.querySelectorAll(".tag-box");
+function displayTag() {
+  if (tagBox.style.display === "none") {
+    tagBox.style.display = "block";
+  } else {
+    tagBox.style.display = "none";
+  }
+}*/
+
+function displayTag() {
+  tagBox.style.display = "block";
+}
+//filterTag.addEventListener("click", displayTag);
+filterTag.forEach((t) => t.addEventListener("click", displayTag));
 
 function fermer() {
   ingTag.style.display = "none";
@@ -96,3 +132,31 @@ function fermer() {
 }
 
 closeTag.forEach((img) => img.addEventListener("click", fermer));
+
+const displayTags = (filterTag, recipes) => {
+  let recipeSection = new Set();
+  filterTag.forEach((t) => {
+    switch (displayTags) {
+      case "Ingredients":
+        recipes.map((recipes) =>
+          recipes.ingredients
+            .filter((ings) => ings.ingredient.includes(t.name))
+            .map(() => recipeSection.add(recipe))
+        );
+        break;
+      case "Appliance":
+        recipes
+          .filter((recipes) => recipes.appliance.includes(t.name))
+          .map((appl) => recipeSection.add(appl));
+        break;
+      case "Ustensils":
+        recipes.map((recipes) =>
+          recipes.ustensils
+            .filter((ust) => ust.includes(t.name))
+            .map(() => recipeSection.add(recipes))
+        );
+        break;
+    }
+  });
+  return [...displayTags];
+};

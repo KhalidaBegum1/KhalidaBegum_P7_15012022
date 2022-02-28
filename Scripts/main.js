@@ -1,7 +1,5 @@
 import { recipes } from "./recipes.js";
 const mainSearch = document.querySelector("#main-search_input");
-const secondarySearch = document.querySelectorAll(".label-input");
-const selectedTagsContainer = document.getElementById("selected-tags-list");
 const searchBtn = document.querySelector("#main-search_btn");
 const recipeSection = document.querySelector("#recipes");
 recipeSection.innerHTML = "";
