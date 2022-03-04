@@ -4,8 +4,6 @@ const searchBtn = document.querySelector("#main-search_btn");
 const recipeSection = document.querySelector("#recipes");
 recipeSection.innerHTML = "";
 
-
-
 searchBtn.addEventListener("click", search);
 mainSearch.addEventListener("change", search);
 function search(event) {

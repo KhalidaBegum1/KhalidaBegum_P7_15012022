@@ -13,9 +13,54 @@ let recipeAppliance = "";
 let recipeIngredient = "";
 let recipeUtensils = [];
 
-let ingTag = document.querySelector(".ingredient-tags");
-let appTag = document.querySelector(".appliance-tags");
-let ustTag = document.querySelector(".ustensils-tags");
+let sortIng = document.querySelector(".ingredient-label");
+let sortApp = document.querySelector(".appareil-label");
+let sortUst = document.querySelector(".utensil-label");
+//let secondarySearch =  document.querySelector("#secondary-search");
+//secondarySearch.forEach(inp => inp.addEventListener('input', sortTag));
+//secondarySearch.forEach(inp => inp.addEventListener('focus', toDisplayList))
+
+export function sortTag(event) {
+  const recipeSection = document.querySelector("#recipes");
+  recipeSection.innerHTML = "";
+  console.log(event.target.value);
+  console.log(recipeSection);
+  const tagWord = event.target.value;
+
+  if (tagWord.length >= 2) {
+    for (let i = 0; i < recipes.length; i++) {
+      let ingredientFiltered = [];
+      for (let k = 0; k < recipes[i].ingredients.length; k++) {
+        if (
+          recipes[i].ingredients[k].ingredient
+            .toLowerCase()
+            .includes(tagWord.toLowerCase())
+        ) {
+          ingredientFiltered.push(recipes[i].ingredients[k]);
+        }
+      }
+
+      if (ingredientFiltered.length > 0) {
+        let textIngredients = "";
+        for (let j = 0; j < recipes[i].ingredients.length; j++) {
+          let ingredient = recipes[i].ingredients[j];
+          textIngredients += ` ${ingredient.ingredient}
+          <span> ${ingredient.quantity}</span> 
+          <span>${ingredient.unit}</span>`;
+        }
+        recipeSection.innerHTML += `<div class="recipe-section" >
+        <span class="title-section" ><div class="recipe-name">${recipes[i].name}  </div>
+        <span class="recipe-time"><i class="far fa-clock"></i> ${recipes[i].time} min </span> </span>
+        <span class="text-section"><div class="recipe-ingredient">
+       ${textIngredients}</div>
+         <div class="recipe-description">  ${recipes[i].description}  </div></span>
+        </div>`;
+      }
+    }
+  }
+}
+let ingSearch = document.querySelector("#ing-search");
+ingSearch.addEventListener("change", sortTag);
 
 function displayTag(event, type) {
   let tagBox = document.querySelector(".tag-box");
@@ -30,8 +75,6 @@ function displayTag(event, type) {
     alt=""
   />
 </li>`;
-  console.log("test");
-  console.log(event);
 }
 
 export function launchIng() {
@@ -50,11 +93,13 @@ export function launchIng() {
   <ul class="search-list">
   <li class="filter-content"> ${recipeIngredient}</li>
   </ul></div> `;
-  let filterTag2 = document.querySelectorAll(".filter-content");
-  console.log(filterTag2);
-  filterTag2.forEach((t, index) =>
-    t.addEventListener("click", () =>
-      displayTag(ingredients[index - 1], "ingredient")
+  let filterTag = document.querySelectorAll(".filter-content");
+
+  filterTag.forEach((t, index) =>
+    t.addEventListener(
+      "click",
+      () => displayTag(ingredients[index - 1], "ingredient")
+      //sortTag()
     )
   );
 }
@@ -73,9 +118,9 @@ export function launchApp() {
   <ul class="search-list">
   <li class="filter-content"> ${recipeAppliance}</li>
   </ul></div> `;
-  let filterTag2 = document.querySelectorAll(".filter-content");
-  console.log(filterTag2);
-  filterTag2.forEach((t, index) =>
+  let filterTag = document.querySelectorAll(".filter-content");
+
+  filterTag.forEach((t, index) =>
     t.addEventListener("click", () =>
       displayTag(appliance[index - 1], "appliance")
     )
@@ -98,9 +143,9 @@ export function launchUst() {
   <ul class="search-list_uten">
   <li class="filter-content"> ${recipeUtensils}</li>
   </ul></div> `;
-  let filterTag2 = document.querySelectorAll(".filter-content");
-  console.log(filterTag2);
-  filterTag2.forEach((t, index) =>
+  let filterTag = document.querySelectorAll(".filter-content");
+
+  filterTag.forEach((t, index) =>
     t.addEventListener("click", () =>
       displayTag(ustensils[index - 1], "ustensils")
     )
@@ -116,10 +161,14 @@ export function closeBox() {
 
 closeSearch.forEach((btn) => btn.addEventListener("click", closeBox));
 
-/*let closeTag = document.querySelectorAll(".close-tag");
+let closeTag = document.querySelectorAll(".close-tag");
+let tagBox = document.querySelectorAll(".tag-box");
+let ingTag = document.querySelector(".ingredient-tags");
+let appTag = document.querySelector(".appliance-tags");
+let ustTag = document.querySelector(".ustensils-tags");
 function fermer() {
-  ingTag.style.display = "none";
-  appTag.style.display = "none";
-  ustTag.style.display = "none";
+  tagBox.style.display = "none";
+  //appTag.style.display = "none";
+  //ustTag.style.display = "none";
 }
-closeTag.forEach((img) => img.addEventListener("click", fermer));*/
+closeTag.forEach((img) => img.addEventListener("click", fermer));
