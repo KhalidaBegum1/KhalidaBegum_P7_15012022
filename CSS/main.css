@@ -48,8 +48,8 @@ h1 img {
 }
 .tag-box {
   display: none;
-  flex-direction:row;
-  flex-wrap:wrap;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .tag-input {

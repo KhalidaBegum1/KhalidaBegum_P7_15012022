@@ -112,8 +112,10 @@ export function sortUtenTag(event) {
     for (let i = 0; i < recipes.length; i++) {
       let ingredientFiltered = [];
       for (let k = 0; k < recipes[i].ingredients.length; k++) {
-        if (recipes.ustensils.toLowerCase().includes(tagWord.toLowerCase())) {
-          ingredientFiltered.push(recipes.ustensils);
+        if (
+          recipes[i].ustensils.toLowerCase().includes(tagWord.toLowerCase())
+        ) {
+          ingredientFiltered.push(recipes[i].ustensils);
         }
       }
 
@@ -172,10 +174,8 @@ export function launchIng() {
   let filterTag = document.querySelectorAll(".filter-content");
 
   filterTag.forEach((t, index) =>
-    t.addEventListener(
-      "click",
-      () => displayTag(ingredients[index - 1], "ingredient")
-      //sortTag()
+    t.addEventListener("click", () =>
+      displayTag(ingredients[index - 1], "ingredient")
     )
   );
 }
