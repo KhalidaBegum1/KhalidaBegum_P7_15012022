@@ -18,7 +18,6 @@ recipeSection.innerHTML = "";
 
 function displayTag(event, type) {
   let tagBox = document.querySelector(".tag-box");
-  console.log(tagBox);
   tagBox.style.display = "flex";
   tagBox.innerHTML += `<li class="${type}-tags">
   <input class="tag-input" type="checkbox" name="" />
@@ -56,6 +55,23 @@ export function launchIng() {
       displayTag(ingredients[index - 1], "ingredient")
     )
   );
+
+  if (filterTag.includes(recipeIngredient)===true) {
+    let textIngredients = "";
+    for (let j = 0; j < recipes[i].ingredients.length; j++) {
+      let ingredient = recipes[i].ingredients[j];
+      textIngredients += ` ${ingredient.ingredient}
+        <span> ${ingredient.quantity}</span> 
+        <span>${ingredient.unit}</span>`;
+    }
+    recipeSection.innerHTML += `<div class="recipe-section" >
+      <span class="title-section" ><div class="recipe-name">${recipes[i].name}  </div>
+      <span class="recipe-time"><i class="far fa-clock"></i> ${recipes[i].time} min </span> </span>
+      <span class="text-section"><div class="recipe-ingredient">
+     ${textIngredients}</div>
+       <div class="recipe-description">  ${recipes[i].description}  </div></span>
+      </div>`;
+  }
 }
 igBtn.addEventListener("click", launchIng);
 
@@ -115,15 +131,3 @@ export function closeBox() {
 }
 
 closeSearch.forEach((btn) => btn.addEventListener("click", closeBox));
-
-let closeTag = document.querySelectorAll(".close-tag");
-let tagBox = document.querySelectorAll(".tag-box");
-let ingTag = document.querySelector(".ingredient-tags");
-let appTag = document.querySelector(".appliance-tags");
-let ustTag = document.querySelector(".ustensils-tags");
-function fermer() {
-  tagBox.style.display = "none";
-  //appTag.style.display = "none";
-  //ustTag.style.display = "none";
-}
-closeTag.forEach((img) => img.addEventListener("click", fermer));
