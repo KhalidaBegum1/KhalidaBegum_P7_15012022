@@ -55,12 +55,9 @@ export function sortAppTag(event) {
   if (tagWord.length >= 2) {
     for (let i = 0; i < recipes.length; i++) {
       let ingredientFiltered = [];
-      for (let k = 0; k < recipes[i].ingredients.length; k++) {
-        if (
-          recipes[i].appliance.toLowerCase().includes(tagWord.toLowerCase())
-        ) {
-          ingredientFiltered.push(recipes[i].appliance);
-        }
+
+      if (recipes[i].appliance.toLowerCase().includes(tagWord.toLowerCase())) {
+        ingredientFiltered.push(recipes[i].appliance);
       }
 
       if (ingredientFiltered.length > 0) {
@@ -94,13 +91,11 @@ export function sortUtenTag(event) {
   if (tagWord.length >= 2) {
     for (let i = 0; i < recipes.length; i++) {
       let ingredientFiltered = [];
-      for (let k = 0; k < recipes[i].ingredients.length; k++) {
+      for (let k = 0; k < recipes[i].ustensils.length; k++) {
         if (
-          recipes[i].description
-            .toLowerCase()
-            .includes(tagWord.toLowerCase())
+          recipes[i].ustensils[k].toLowerCase().includes(tagWord.toLowerCase())
         ) {
-          ingredientFiltered.push(recipes[i].description.ustensils);
+          ingredientFiltered.push(recipes[i].ustensils[k]);
         }
       }
 
