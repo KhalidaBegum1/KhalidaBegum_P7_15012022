@@ -120,18 +120,17 @@ export function sortUtenTag(event) {
 }
 utenSearch.addEventListener("change", sortUtenTag);
 
-let closeTag = document.querySelectorAll(".close-tag");
+let closeTag = document.querySelectorAll(".tagBtn_close");
 let tagBox = document.querySelectorAll(".tag-box");
-const ingTag = document.querySelector(".ingredient-tags");
+let ingTag = document.querySelector(".ingredient-tags");
 const appTag = document.querySelector(".appliance-tags");
 const ustTag = document.querySelector(".ustensils-tags");
-
-closeTag.forEach((img) =>
+/*closeTag.forEach((img) =>
   img.addEventListener("click", () => {
     tagBox.style.display = "none";
   })
 );
-
+*/
 /*function fermer() {
   let tagBox = document.querySelector(".tag-box");
   tagBox.style.display = "none";
@@ -142,11 +141,16 @@ closeTag.forEach((img) =>
 }*/
 //closeTag.forEach((img) => img.addEventListener("change", fermer));
 //ingTag.addEventListener("click", fermer);
-function fermer() {
-  ingTag.style.display = "none";
-  appTag.style.display = "none";
-  ustTag.style.display = "none";
+
+export function closeTagLabel() {
+  let tagBox = document.querySelectorAll(".tag-box");
+  //let ingTag = document.querySelectorAll(".ingredient-tags");
+  //ingTag.style.display = "none";
+  //appTag.style.display = "none";
+  //ustTag.style.display = "none";
+  tagBox.style.display = "none";
+  console.log(closeTagLabel);
+  console.log(tagBox);
 }
-console.log(fermer);
-console.log(closeTag);
-closeTag.forEach((img) => img.addEventListener("click", fermer));
+
+closeTag.forEach((btn) => btn.addEventListener("click", closeTagLabel));

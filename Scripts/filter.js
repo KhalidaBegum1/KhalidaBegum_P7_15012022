@@ -1,5 +1,5 @@
 import { recipes } from "./recipes.js";
-import { sortIngTag, sortUtenTag, sortAppTag } from "./tag.js";
+import { sortIngTag, sortUtenTag, sortAppTag, closeTagLabel} from "./tag.js";
 
 let closeSearch = document.querySelectorAll(".close-btn");
 const dropIngredient = document.querySelector(".search-ingredient");
@@ -23,11 +23,10 @@ function displayTag(event, type) {
   tagBox.innerHTML += `<li class="${type}-tags">
   <input class="tag-input" type="checkbox" name="" />
   <label class="tag-label" for="${type}">${event}</label>
-  <img
-    class="close-tag"
+ <button class="tagBtn_close"> <img class="close-tag"
     src="Assets/NicePng_close-button-png_521935.png"
     alt=""
-  />
+  /></button>
 </li>`;
   if (type === "ingredient") {
     sortIngTag({ target: { value: event } });
