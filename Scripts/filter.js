@@ -42,7 +42,7 @@ function displayTag(event, type) {
 
 export function launchIng() {
   dropIngredient.style.display = "block";
-  let word = document.querySelector(".label-input").value;
+  let word = document.getElementById("ing-search").value;
   console.log(word);
   let ingredients = [];
   recipes.forEach((recipes) => {
@@ -84,12 +84,24 @@ igBtn.addEventListener("click", launchIng);
 
 export function launchApp() {
   dropAppareil.style.display = "block";
-  //let word = document.querySelector(".label-input").value;
+  let word = document.getElementById("app-search").value;
   let appliance = [];
   recipes.forEach((recipes) => {
-    if (recipeAppliance.includes(recipes.appliance) === false) {
-      recipeAppliance += `<li class="filter-content">${recipes.appliance}</li>`;
-      appliance.push(recipes.appliance);
+    if (word && word !== "") {
+      if (
+        recipes.appliance.toLowerCase().includes(word.toLowerCase()) &&
+        appliance.findIndex(
+          (i) => recipes.appliance.toLowerCase() == i.toLowerCase()
+        ) < 0
+      ) {
+        recipeAppliance += `<li class="filter-content">${recipes.appliance}</li>`;
+        appliance.push(recipes.appliance);
+      }
+    } else {
+      if (recipeAppliance.includes(recipes.appliance) === false) {
+        recipeAppliance += `<li class="filter-content">${recipes.appliance}</li>`;
+        appliance.push(recipes.appliance);
+      }
     }
   });
   appFilter.innerHTML += `<div class="search-text" id="appareils-filter"> 
@@ -108,12 +120,25 @@ appBtn.addEventListener("click", launchApp);
 
 export function launchUst() {
   dropUtensil.style.display = "block";
+  let word = document.getElementById("uten-search").value;
   let ustensils = [];
   recipes.forEach((recipes) => {
     recipes.ustensils.forEach((ustensil) => {
-      if (recipeUtensils.includes(ustensil) === false) {
-        recipeUtensils += `<li class="filter-content">${ustensil}</li>`;
-        ustensils.push(ustensil);
+      if (word && word !== "") {
+        if (
+          ustensil.toLowerCase().includes(word.toLowerCase()) &&
+          ustensils.findIndex(
+            (i) => ustensil.toLowerCase() == i.toLowerCase()
+          ) < 0
+        ) {
+          recipeUtensils += `<li class="filter-content">${ustensil}</li>`;
+          ustensils.push(ustensil);
+        }
+      } else {
+        if (recipeUtensils.includes(ustensil) === false) {
+          recipeUtensils += `<li class="filter-content">${ustensil}</li>`;
+          ustensils.push(ustensil);
+        }
       }
     });
   });
