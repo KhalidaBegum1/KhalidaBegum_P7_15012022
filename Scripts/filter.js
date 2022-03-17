@@ -1,5 +1,5 @@
 import { recipes } from "./recipes.js";
-import { sortIngTag, sortUtenTag, sortAppTag, closeTagLabel} from "./tag.js";
+import { sortIngTag, sortUtenTag, sortAppTag, closeTagLabel } from "./tag.js";
 
 let closeSearch = document.querySelectorAll(".close-btn");
 const dropIngredient = document.querySelector(".search-ingredient");
@@ -42,7 +42,6 @@ function displayTag(event, type) {
 export function launchIng() {
   dropIngredient.style.display = "block";
   let word = document.getElementById("ing-search").value;
-  console.log(word);
   let ingredients = [];
   recipes.forEach((recipes) => {
     recipes.ingredients.forEach((ingredient) => {

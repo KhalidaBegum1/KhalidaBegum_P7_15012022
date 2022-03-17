@@ -84,8 +84,7 @@ appSearch.addEventListener("change", sortAppTag);
 export function sortUtenTag(event) {
   const recipeSection = document.querySelector("#recipes");
   recipeSection.innerHTML = "";
-  console.log(event.target.value);
-  console.log(recipeSection);
+
   const tagWord = event.target.value;
 
   if (tagWord.length >= 2) {
@@ -125,12 +124,14 @@ let tagBox = document.querySelectorAll(".tag-box");
 let ingTag = document.querySelector(".ingredient-tags");
 const appTag = document.querySelector(".appliance-tags");
 const ustTag = document.querySelector(".ustensils-tags");
-/*closeTag.forEach((img) =>
-  img.addEventListener("click", () => {
+
+/*closeTag.forEach((btn) =>
+  btn.addEventListener("click", () => {
+    console.log(closeTag);
     tagBox.style.display = "none";
   })
-);
-*/
+);*/
+
 /*function fermer() {
   let tagBox = document.querySelector(".tag-box");
   tagBox.style.display = "none";
@@ -140,17 +141,17 @@ const ustTag = document.querySelector(".ustensils-tags");
   console.log(fermer);
 }*/
 //closeTag.forEach((img) => img.addEventListener("change", fermer));
-//ingTag.addEventListener("click", fermer);
+//ingTag.addEventListener("click",closeTagLabel);
 
 export function closeTagLabel() {
-  let tagBox = document.querySelectorAll(".tag-box");
-  //let ingTag = document.querySelectorAll(".ingredient-tags");
+  let tagBox = document.querySelector(".tag-box");
+
+  //let ingTag = document.querySelector(".ingredient-tags");
   //ingTag.style.display = "none";
   //appTag.style.display = "none";
   //ustTag.style.display = "none";
   tagBox.style.display = "none";
   console.log(closeTagLabel);
-  console.log(tagBox);
 }
 
-closeTag.forEach((btn) => btn.addEventListener("click", closeTagLabel));
+//closeTag.forEach((img) => img.addEventListener("change", closeTagLabel));
