@@ -119,39 +119,3 @@ export function sortUtenTag(event) {
 }
 utenSearch.addEventListener("change", sortUtenTag);
 
-let closeTag = document.querySelectorAll(".tagBtn_close");
-let tagBox = document.querySelectorAll(".tag-box");
-let ingTag = document.querySelector(".ingredient-tags");
-const appTag = document.querySelector(".appliance-tags");
-const ustTag = document.querySelector(".ustensils-tags");
-
-/*closeTag.forEach((btn) =>
-  btn.addEventListener("click", () => {
-    console.log(closeTag);
-    tagBox.style.display = "none";
-  })
-);*/
-
-/*function fermer() {
-  let tagBox = document.querySelector(".tag-box");
-  tagBox.style.display = "none";
-  tagBox.innerHTML = "";
-  //appTag.style.display = "none";
-  //ustTag.style.display = "none";
-  console.log(fermer);
-}*/
-//closeTag.forEach((img) => img.addEventListener("change", fermer));
-//ingTag.addEventListener("click",closeTagLabel);
-
-export function closeTagLabel() {
-  let tagBox = document.querySelector(".tag-box");
-
-  //let ingTag = document.querySelector(".ingredient-tags");
-  //ingTag.style.display = "none";
-  //appTag.style.display = "none";
-  //ustTag.style.display = "none";
-  tagBox.style.display = "none";
-  console.log(closeTagLabel);
-}
-
-//closeTag.forEach((img) => img.addEventListener("change", closeTagLabel));

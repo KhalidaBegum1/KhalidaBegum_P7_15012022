@@ -93,6 +93,9 @@ h1 img {
   padding: 2px 2px 2px 2px;
   height: 29px;
 }
+.ingredient-tags{
+  display:flex;
+}
 
 #secondary-search {
   display: flex;

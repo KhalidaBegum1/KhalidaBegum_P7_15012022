@@ -1,5 +1,5 @@
 import { recipes } from "./recipes.js";
-import { sortIngTag, sortUtenTag, sortAppTag, closeTagLabel } from "./tag.js";
+import { sortIngTag, sortUtenTag, sortAppTag } from "./tag.js";
 
 let closeSearch = document.querySelectorAll(".close-btn");
 const dropIngredient = document.querySelector(".search-ingredient");
@@ -28,10 +28,19 @@ function displayTag(event, type) {
     alt=""
   /></button>
 </li>`;
+  let closeTag = document.querySelectorAll(".tagBtn_close");
+  console.log(closeTag);
+  closeTag.forEach((img) =>
+    img.addEventListener("click", () => {
+      tagBox.style.display = "none";
+    })
+  );
+
   if (type === "ingredient") {
     sortIngTag({ target: { value: event } });
   }
   if (type === "appliance") {
+    console.log(event);
     sortAppTag({ target: { value: event } });
   }
   if (type === "ustensils") {
@@ -72,10 +81,15 @@ export function launchIng() {
 
   let filterTag = document.querySelectorAll(".filter-content");
 
-  filterTag.forEach((t, index) =>
-    t.addEventListener("click", () =>
-      displayTag(ingredients[index - 1], "ingredient")
-    )
+  filterTag.forEach((t) =>
+    t.addEventListener("click", () => {
+      console.log(ingredients);
+      console.log(t.innerText);
+      const ingredientsTmp = ingredients.find((el) => t.innerText.includes(el));
+      if (ingredientsTmp) {
+        displayTag(ingredientsTmp, "ingredient");
+      }
+    })
   );
 }
 igBtn.addEventListener("click", launchIng);
@@ -108,10 +122,12 @@ export function launchApp() {
   </ul></div> `;
   let filterTag = document.querySelectorAll(".filter-content");
 
-  filterTag.forEach((t, index) =>
-    t.addEventListener("click", () =>
-      displayTag(appliance[index - 1], "appliance")
-    )
+  filterTag.forEach((t) =>
+    t.addEventListener("click", () => {
+      const applianceTmp = appliance.find((el) => t.innerText.includes(el));
+
+      displayTag(applianceTmp, "appliance");
+    })
   );
 }
 appBtn.addEventListener("click", launchApp);
@@ -146,10 +162,12 @@ export function launchUst() {
   </ul></div> `;
   let filterTag = document.querySelectorAll(".filter-content");
 
-  filterTag.forEach((t, index) =>
-    t.addEventListener("click", () =>
-      displayTag(ustensils[index - 1], "ustensils")
-    )
+  filterTag.forEach((t) =>
+    t.addEventListener("click", () => {
+      const ustensilsTmp = ustensils.find((el) => t.innerText.includes(el));
+
+      displayTag(ustensilsTmp, "ustensils");
+    })
   );
 }
 

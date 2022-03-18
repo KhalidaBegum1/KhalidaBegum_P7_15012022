@@ -1,4 +1,5 @@
 import { recipes } from "./recipes.js";
+
 const mainSearch = document.querySelector("#main-search_input");
 const searchBtn = document.querySelector("#main-search_btn");
 const recipeSection = document.querySelector("#recipes");
