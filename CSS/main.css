@@ -35,6 +35,7 @@ h1 img {
 }
 
 .message-error {
+  display:none;
   color: red;
   font-size: 26px;
   margin-left:25%;

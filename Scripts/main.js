@@ -1,22 +1,23 @@
 import { recipes } from "./recipes.js";
-//import { showError } from "./error.js";
+import { showError } from "./error.js";
 
 const mainSearch = document.querySelector("#main-search_input");
 const searchBtn = document.querySelector("#main-search_btn");
 const recipeSection = document.querySelector("#recipes");
 recipeSection.innerHTML = "";
 
-
-
 searchBtn.addEventListener("click", search);
 mainSearch.addEventListener("change", search);
 
 function search() {
   const word = mainSearch.value;
+  let isWrong = true;
   if (word.length >= 3) {
     recipeSection.innerHTML = "";
     for (let i = 0; i < recipes.length; i++) {
       if (recipes[i].name.toLowerCase().includes(word.toLowerCase())) {
+        isWrong = false;
+
         let textIngredients = "";
         for (let j = 0; j < recipes[i].ingredients.length; j++) {
           let ingredient = recipes[i].ingredients[j];
@@ -34,6 +35,7 @@ function search() {
       } else if (
         recipes[i].description.toLowerCase().includes(word.toLowerCase())
       ) {
+        isWrong = false;
         let textIngredients = "";
         for (let j = 0; j < recipes[i].ingredients.length; j++) {
           let ingredient = recipes[i].ingredients[j];
@@ -61,6 +63,7 @@ function search() {
         }
 
         if (ingredientFiltered.length > 0) {
+          isWrong = false;
           let textIngredients = "";
           for (let j = 0; j < recipes[i].ingredients.length; j++) {
             let ingredient = recipes[i].ingredients[j];
@@ -79,7 +82,7 @@ function search() {
       }
     }
   }
-  
+  showError(isWrong);
 }
 
 recipes.forEach((recipes) => {
@@ -99,4 +102,3 @@ recipes.forEach((recipes) => {
   </div>
   `;
 });
-
