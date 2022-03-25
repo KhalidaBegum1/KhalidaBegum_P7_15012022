@@ -1,13 +1,17 @@
 import { recipes } from "./recipes.js";
+//import { showError } from "./error.js";
 
 const mainSearch = document.querySelector("#main-search_input");
 const searchBtn = document.querySelector("#main-search_btn");
 const recipeSection = document.querySelector("#recipes");
 recipeSection.innerHTML = "";
 
+
+
 searchBtn.addEventListener("click", search);
 mainSearch.addEventListener("change", search);
-function search(event) {
+
+function search() {
   const word = mainSearch.value;
   if (word.length >= 3) {
     recipeSection.innerHTML = "";
@@ -75,6 +79,7 @@ function search(event) {
       }
     }
   }
+  
 }
 
 recipes.forEach((recipes) => {
@@ -94,3 +99,4 @@ recipes.forEach((recipes) => {
   </div>
   `;
 });
+

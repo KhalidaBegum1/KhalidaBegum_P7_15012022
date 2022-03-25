@@ -1,29 +1,28 @@
-/*const errorMessage = document.getElementById("msg-error");
-
-function isNotValid() {
-  if (!word) {
-  }
-}
-
-const showError = (isWrong, errorMessage) => {
-  if (isWrong) {
-    errorMessage.style.display = "inline";
-  } else {
-    //by default errorMessage is displayed none
-    errorMessage.style.display += "help";
-  }
+const errorMessage = {
+  word: "Error pas de recettes trouvées",
 };
-console.log(errorMessage);*/
-const mainSearch = document.querySelector("#main-search_input");
-const word = mainSearch.value;
-
-function showError() {
-  var errorMessage = document.getElementById("msg-error");
-  if (word === !mainSearch.value) {
-    // Changing content and color of content
-    errorMessage.textContent = "Pas de recettes trouvées";
-    errorMessage.style.color = "red";
-  } else {
-    errorMessage.textContent = "";
-  }
+function createErrorMessage(id, message) {
+  const errorMsg = document.createElement("span");
+  errorMsg.textContent = message;
+  document.getElementById(id).parentElement.appendChild(errorMsg);
+  errorMsg.classList.add("message-error");
+  return errorMsg;
 }
+const searchError = createErrorMessage("recipes", errorMessage.word);
+
+/*const showError = (isWrong, errorMsg) => {
+  if (isWrong) {
+    errorMsg.style.display = "inline";
+  } else {
+    //by default errorMsg is displayed none
+    errorMsg.style.display = "none";
+  }
+};*/
+
+const showError = (isWrong, domError) => {
+  domError.innerHTML = "";
+  if (isWrong) {
+    domError.style.display = "block";
+  } 
+};
+

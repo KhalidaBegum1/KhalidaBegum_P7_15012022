@@ -34,6 +34,12 @@ h1 img {
   font-size: 24px;
 }
 
+.message-error {
+  color: red;
+  font-size: 26px;
+  margin-left:25%;
+}
+
 #selected-tags_list {
   display: flex;
   flex-direction: row;
@@ -93,9 +99,6 @@ h1 img {
   padding: 2px 2px 2px 2px;
   height: 29px;
 }
-.ingredient-tags{
-  display:flex;
-}
 
 #secondary-search {
   display: flex;
@@ -151,7 +154,7 @@ h1 img {
 }
 
 #msg-error {
-  display:none;
+  display: none;
   margin-top: 5%;
   margin-left: 35%;
   font-size: 2rem;

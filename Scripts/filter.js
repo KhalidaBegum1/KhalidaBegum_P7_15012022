@@ -16,9 +16,16 @@ let recipeIngredient = "";
 let recipeUtensils = [];
 const recipeSection = document.querySelector("#recipes");
 recipeSection.innerHTML = "";
+//let ingTag = document.querySelector(".ingredient-tags");
+//let appTag = document.querySelector(".appliance-tags");
+//let ustTag = document.querySelector(".ustensils-tags");
 
 function displayTag(event, type) {
   let tagBox = document.querySelector(".tag-box");
+  let ingTag = document.querySelector(".ingredient-tags");
+  let appTag = document.querySelector(".appliance-tags");
+  let ustTag = document.querySelector(".ustensils-tags");
+
   tagBox.style.display = "flex";
   tagBox.innerHTML += `<li class="${type}-tags">
   <input class="tag-input" type="checkbox" name="" />
@@ -28,13 +35,31 @@ function displayTag(event, type) {
     alt=""
   /></button>
 </li>`;
+
   let closeTag = document.querySelectorAll(".tagBtn_close");
-  console.log(closeTag);
-  closeTag.forEach((img) =>
+
+  console.log(ingTag);
+  console.log(tagBox);
+  /*closeTag.forEach((img) =>
     img.addEventListener("click", () => {
       tagBox.style.display = "none";
+      //ingTag.style.display = "none";
+      //appTag.style.display = "none";
+      //ustTag.style.display = "none";
     })
-  );
+  );*/
+
+  function closeTagLabel() {
+    tagBox.style.display = "none";
+
+    ingTag.style.display = "none";
+
+    appTag.style.display = "none";
+
+    ustTag.style.display = "none";
+  }
+
+  closeTag.forEach((l) => l.addEventListener("click", closeTagLabel));
 
   if (type === "ingredient") {
     sortIngTag({ target: { value: event } });
