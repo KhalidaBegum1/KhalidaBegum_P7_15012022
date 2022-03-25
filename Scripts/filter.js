@@ -16,50 +16,27 @@ let recipeIngredient = "";
 let recipeUtensils = [];
 const recipeSection = document.querySelector("#recipes");
 recipeSection.innerHTML = "";
-//let ingTag = document.querySelector(".ingredient-tags");
-//let appTag = document.querySelector(".appliance-tags");
-//let ustTag = document.querySelector(".ustensils-tags");
 
 function displayTag(event, type) {
   let tagBox = document.querySelector(".tag-box");
-  let ingTag = document.querySelector(".ingredient-tags");
-  let appTag = document.querySelector(".appliance-tags");
-  let ustTag = document.querySelector(".ustensils-tags");
 
   tagBox.style.display = "flex";
-  tagBox.innerHTML += `<li class="${type}-tags">
+  tagBox.innerHTML += `<li class="${type}-tags" id="tagbox-${event.trim()}">
   <input class="tag-input" type="checkbox" name="" />
   <label class="tag-label" for="${type}">${event}</label>
- <button class="tagBtn_close"> <img class="close-tag"
+ <button class="tagBtn_close" id="${event.trim()}"> <img class="close-tag"
     src="Assets/NicePng_close-button-png_521935.png"
     alt=""
   /></button>
 </li>`;
 
   let closeTag = document.querySelectorAll(".tagBtn_close");
-
-  console.log(ingTag);
-  console.log(tagBox);
-  /*closeTag.forEach((img) =>
-    img.addEventListener("click", () => {
-      tagBox.style.display = "none";
-      //ingTag.style.display = "none";
-      //appTag.style.display = "none";
-      //ustTag.style.display = "none";
-    })
-  );*/
-
-  function closeTagLabel() {
-    tagBox.style.display = "none";
-
-    ingTag.style.display = "none";
-
-    appTag.style.display = "none";
-
-    ustTag.style.display = "none";
-  }
-
-  closeTag.forEach((l) => l.addEventListener("click", closeTagLabel));
+  closeTag.forEach((el) => {
+    let closeLabel = document.getElementById(`tagbox-${el.id}`);
+    closeLabel.addEventListener("click", () => {
+      closeLabel.style.display = "none";
+    });
+  });
 
   if (type === "ingredient") {
     sortIngTag({ target: { value: event } });
