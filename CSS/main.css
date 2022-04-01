@@ -14,9 +14,6 @@ h1 img {
   width: 75%;
   margin: 30px;
 }
-h2 {
-  display: none;
-}
 
 #main-search {
   display: flex;
