@@ -1,7 +1,5 @@
 import { recipes } from "./recipes.js";
 const mainSearch = document.querySelector("#main-search_input");
-const secondarySearch = document.querySelectorAll(".label-input");
-const selectedTagsContainer = document.getElementById("selected-tags-list");
 const searchBtn = document.querySelector("#main-search_btn");
 const recipeSection = document.querySelector("#recipes");
 recipeSection.innerHTML = "";
@@ -12,7 +10,9 @@ function search(event) {
   const word = mainSearch.value;
   if (word.length >= 3) {
     recipeSection.innerHTML = "";
+    //research on each recipes
     recipes.forEach((recipe) => {
+      //check if name of recipes matches with word
       if (recipe.name.toLowerCase().includes(word.toLowerCase())) {
         let textIngredients = "";
         recipe.ingredients.forEach((ingredient) => {
@@ -27,9 +27,9 @@ function search(event) {
        ${textIngredients}</div>
          <div class="recipe-description">  ${recipe.description}  </div></span>
         </div>`;
-      } else if (
-        recipe.description.toLowerCase().includes(word.toLowerCase())
-      ) {
+      }
+      //check if description matches with word
+      else if (recipe.description.toLowerCase().includes(word.toLowerCase())) {
         let textIngredients = "";
         recipe.ingredients.forEach((ingredient) => {
           textIngredients += ` ${ingredient.ingredient}
@@ -43,7 +43,9 @@ function search(event) {
        ${textIngredients}</div>
          <div class="recipe-description">  ${recipe.description}  </div></span>
         </div>`;
-      } else {
+      }
+      //check if each ingredient matches with word
+      else {
         let ingredientFiltered = recipe.ingredients.filter((ing) =>
           ing.ingredient.toLowerCase().includes(word.toLowerCase())
         );
@@ -91,9 +93,6 @@ const closeSearch = document.querySelector(".search-close");
 const dropIngredient = document.querySelector(".search-ingredient");
 const dropAppareil = document.querySelector(".search-appareil");
 const dropUtensil = document.querySelector(".search-utensil");
-const igBtn = document.getElementById("ingredients-btn");
-const appBtn = document.getElementById("appareils-btn");
-const utenBtn = document.getElementById("utensils-btn");
 
 dropSearch.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -101,7 +100,11 @@ dropSearch.forEach((btn) => {
   });
 });
 
+//addEvent to closeBox onclick
 function closeBox() {
   dropIngredient.style.display = "none";
+  dropAppareil.style.display = "none";
+  dropUtensil.style.display = "none";
 }
-closeSearch.addEventListener("click", closeBox);
+
+closeSearch.forEach((btn) => btn.addEventListener("click", closeBox));
