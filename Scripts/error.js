@@ -8,7 +8,7 @@ function createErrorMessage(id, message) {
   errorMsg.classList.add("message-error");
   return errorMsg;
 }
-const searchError = createErrorMessage("recipes", errorMessage.word);
+createErrorMessage("recipes", errorMessage.word);
 
 export const showError = (isWrong) => {
   let errorMsg = document.querySelector(".message-error");

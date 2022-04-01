@@ -14,6 +14,9 @@ h1 img {
   width: 75%;
   margin: 30px;
 }
+h2 {
+  display: none;
+}
 
 #main-search {
   display: flex;
@@ -35,10 +38,10 @@ h1 img {
 }
 
 .message-error {
-  display:none;
+  display: none;
   color: red;
   font-size: 26px;
-  margin-left:25%;
+  margin-left: 25%;
 }
 
 #selected-tags_list {
