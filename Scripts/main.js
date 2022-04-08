@@ -152,6 +152,10 @@ function displayTag(event, type) {
     let closeLabel = document.getElementById(`tagbox-${el.id}`);
     closeLabel.addEventListener("click", () => {
       closeLabel.style.display = "none";
+      console.log(filteredRecipes);
+      let newEvent = document.querySelectorAll(`#${event}`);
+      console.log(newEvent);
+      newEvent.forEach((e) => (e.style.display = "none"));
     });
   });
 

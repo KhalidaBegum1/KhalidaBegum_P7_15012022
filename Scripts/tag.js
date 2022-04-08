@@ -4,11 +4,12 @@ import { recipes } from "./recipes.js";
 let ingSearch = document.querySelector("#ing-search");
 let appSearch = document.querySelector("#app-search");
 let utenSearch = document.querySelector("#uten-search");
-
+let filteredRecipes = recipes;
 //filter tag according to tagword searched
 export function sortIngTag(event) {
   const recipeSection = document.querySelector("#recipes");
   recipeSection.innerHTML = "";
+  filteredRecipes = [];
 
   const tagWord = event.target.value;
 
@@ -35,13 +36,16 @@ export function sortIngTag(event) {
           <span> ${ingredient.quantity}</span> 
           <span>${ingredient.unit}</span>`;
         }
-        recipeSection.innerHTML += `<div class="recipe-section" >
+        recipeSection.innerHTML += `<div class="recipe-section" id="${tagWord}" >
         <span class="title-section" ><div class="recipe-name">${recipes[i].name}  </div>
         <span class="recipe-time"><i class="far fa-clock"></i> ${recipes[i].time} min </span> </span>
         <span class="text-section"><div class="recipe-ingredient">
        ${textIngredients}</div>
          <div class="recipe-description">  ${recipes[i].description}  </div></span>
         </div>`;
+        if (filteredRecipes.findIndex((r) => r.id == recipes[i].id) < 0) {
+          filteredRecipes.push(recipes[i]);
+        }
       }
     }
   }
@@ -52,6 +56,7 @@ ingSearch.addEventListener("change", sortIngTag);
 export function sortAppTag(event) {
   const recipeSection = document.querySelector("#recipes");
   recipeSection.innerHTML = "";
+  filteredRecipes = [];
 
   const tagWord = event.target.value;
 
@@ -72,13 +77,17 @@ export function sortAppTag(event) {
             <span> ${ingredient.quantity}</span> 
             <span>${ingredient.unit}</span>`;
         }
-        recipeSection.innerHTML += `<div class="recipe-section" >
+        recipeSection.innerHTML += `<div class="recipe-section" id="${tagWord}" >
           <span class="title-section" ><div class="recipe-name">${recipes[i].name}  </div>
           <span class="recipe-time"><i class="far fa-clock"></i> ${recipes[i].time} min </span> </span>
           <span class="text-section"><div class="recipe-ingredient">
          ${textIngredients}</div>
            <div class="recipe-description">  ${recipes[i].description}  </div></span>
           </div>`;
+
+        if (filteredRecipes.findIndex((r) => r.id == recipes[i].id) < 0) {
+          filteredRecipes.push(recipes[i]);
+        }
       }
     }
   }
@@ -89,6 +98,7 @@ appSearch.addEventListener("change", sortAppTag);
 export function sortUtenTag(event) {
   const recipeSection = document.querySelector("#recipes");
   recipeSection.innerHTML = "";
+  filteredRecipes = [];
 
   const tagWord = event.target.value;
 
@@ -114,13 +124,16 @@ export function sortUtenTag(event) {
             <span> ${ingredient.quantity}</span> 
             <span>${ingredient.unit}</span>`;
         }
-        recipeSection.innerHTML += `<div class="recipe-section" >
+        recipeSection.innerHTML += `<div class="recipe-section" id="${tagWord}" >
           <span class="title-section" ><div class="recipe-name">${recipes[i].name}  </div>
           <span class="recipe-time"><i class="far fa-clock"></i> ${recipes[i].time} min </span> </span>
           <span class="text-section"><div class="recipe-ingredient">
          ${textIngredients}</div>
            <div class="recipe-description">  ${recipes[i].description}  </div></span>
           </div>`;
+        if (filteredRecipes.findIndex((r) => r.id == recipes[i].id) < 0) {
+          filteredRecipes.push(recipes[i]);
+        }
       }
     }
   }

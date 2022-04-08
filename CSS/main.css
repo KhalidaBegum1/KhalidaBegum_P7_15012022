@@ -335,8 +335,19 @@ h1 img {
   .search-ingredient {
     margin-left: 17px;
     margin-top: 2em;
+    max-width: 400px;
+  }
+  .search-appareil {
+    margin-left: 13.5em;
+    margin-top: 2em;
+    max-width: 400px;
   }
 
+  .search-utensil {
+    margin-left: 26em;
+    margin-top: 2em;
+    max-width: 400px;
+  }
   #recipes {
     display: grid;
     grid-template-columns: repeat(3, 33%);
