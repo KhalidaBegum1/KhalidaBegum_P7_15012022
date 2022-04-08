@@ -21,6 +21,7 @@ let recipeAppliance = "";
 let recipeIngredient = "";
 let recipeUtensils = [];
 let filteredRecipes = recipes;
+let tagList = [];
 
 recipeSection.innerHTML = "";
 
@@ -146,16 +147,46 @@ function displayTag(event, type) {
     alt=""
   /></button>
 </li>`;
+  tagList.push({ type, event });
   //addEvent to remove tag click on close button
   let closeTag = document.querySelectorAll(".tagBtn_close");
   closeTag.forEach((el) => {
     let closeLabel = document.getElementById(`tagbox-${el.id}`);
     closeLabel.addEventListener("click", () => {
       closeLabel.style.display = "none";
-      console.log(filteredRecipes);
-      let newEvent = document.querySelectorAll(`#${event}`);
-      console.log(newEvent);
-      newEvent.forEach((e) => (e.style.display = "none"));
+      let indexOfTag = tagList.findIndex((t) => t.event === event);
+      tagList.splice(indexOfTag, 1);
+      tagList.forEach((t) => {
+        if (t.type === "ingredient") {
+          sortIngTag({ target: { value: t.event } });
+        }
+        if (t.type === "appliance") {
+          sortAppTag({ target: { value: t.event } });
+        }
+        if (t.type === "ustensils") {
+          sortUtenTag({ target: { value: t.event } });
+        }
+      });
+      if (tagList.length === 0) {
+        recipeSection.innerHTML = "";
+        recipes.forEach((recipes) => {
+          let textIngredients = "";
+          recipes.ingredients.forEach((ingredient) => {
+            textIngredients += ` ${ingredient.ingredient}
+    <span> ${ingredient.quantity}</span> 
+    <span>${ingredient.unit}</span>`;
+          });
+          recipeSection.innerHTML += ` 
+  <div class="recipe-section" >
+  <span class="title-section" ><div class="recipe-name">${recipes.name}  </div>
+  <span class="recipe-time"><i class="far fa-clock"></i> ${recipes.time} min </span> </span>
+  <span class="text-section"><div class="recipe-ingredient">   ${textIngredients}
+  </div>
+  <div class="recipe-description">  ${recipes.description}  </div></span>
+  </div>
+  `;
+        });
+      }
     });
   });
 
